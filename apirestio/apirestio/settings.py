@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
+    'rest_framework',
     'django_filters',
     'myappi.apps.MyappiConfig',
     'django_admin_generator',
+    'silk'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'silk.middleware.SilkyMiddleware',
 ]
 
 ROOT_URLCONF = 'apirestio.urls'
@@ -78,7 +81,7 @@ WSGI_APPLICATION = 'apirestio.wsgi.application'
 GRAPHENE = {
     'SCHEMA': 'apirestio.schema.schema' # Where your Graphene schema lives
 }
-
+SILKY_PYTHON_PROFILER = True
 GRAPHENE_DJANGO_EXTRAS = {
     'DEFAULT_PAGINATION_CLASS': 'graphene_django_extras.paginations.LimitOffsetGraphqlPagination',
     'DEFAULT_PAGE_SIZE': 20,

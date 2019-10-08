@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('graphql', GraphQLView.as_view(graphiql=True, schema = schema)),
     path('', include('myappi.urls')),
+    path('silk/', include('silk.urls', namespace='silk'))
 ]

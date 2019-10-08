@@ -1,6 +1,13 @@
 from django.urls import path, include
 from . import views
 
+from rest_framework.routers import DefaultRouter
+from .apiviews import PlatViewSet
+
+
+router = DefaultRouter()
+router.register('plataip', PlatViewSet, base_name='plats')
+
 urlpatterns = [
     path('', views.home, name='home'),
 
@@ -11,3 +18,4 @@ urlpatterns = [
     path('specialite', views.specialite, name='specialite'),
     
 ]
+urlpatterns += router.urls

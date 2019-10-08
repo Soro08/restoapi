@@ -9,4 +9,4 @@ graphene-django==2.6.0
 graphene-django-extras==0.4.6
 Pillow==6.2.0
 requests==2.22.0
-
+django-silk
