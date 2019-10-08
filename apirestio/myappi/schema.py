@@ -24,7 +24,7 @@ class CategorieNode(DjangoObjectType):
 class MenuNode(DjangoObjectType):
     class Meta:
         model = Menu
-        filter_fields = ['jour',]
+        filter_fields = ['jour','statut']
         interfaces = (relay.Node, )
 
 class PlatNode(DjangoObjectType):

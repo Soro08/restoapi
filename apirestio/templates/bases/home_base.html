@@ -32,6 +32,32 @@
     <!-- Modernizr JS for IE8 support of HTML5 elements and media queries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 
+    <style>
+    
+    .pace {
+        -webkit-pointer-events: none;
+        pointer-events: none;
+
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        }
+
+        .pace-inactive {
+        display: none;
+        }
+
+        .pace .pace-progress {
+        background: #af63de;
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 100%;
+        width: 100%;
+        height: 2px;
+        } 
+    </style>
+
 </head>
 <body data-spy="scroll" data-target="#navbar" class="static-layout">
 	<div id="side-nav" class="sidenav">
@@ -67,7 +93,7 @@
         
     </div>
     <div id="canvas-overlay"></div>
-	<div class="boxed-page">
+	<div id="my-app" class="boxed-page">
 		<nav id="navbar-header" class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand navbar-brand-center d-flex align-items-center p-0 only-mobile" href="/">
@@ -192,21 +218,26 @@
     </div>
 </div>
 	<!-- External JS -->
-	<script src="/static/jquery.min.js"></script>
+    <script src="/static/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 	<script src="/static/vendor/bootstrap/popper.min.js"></script>
 	<script src="/static/vendor/bootstrap/bootstrap.min.js"></script>
 	<script src="/static/vendor/select2/select2.min.js "></script>
 	<script src="/static/vendor/owlcarousel/owl.carousel.min.js"></script>
-	<script src="https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.js"></script>
-	<script src="/static/vendor/stellar/jquery.stellar.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.js"></script>
+    <script src="/static/js//pace.min.js"></script>
+	<!-- <script src="/static/vendor/stellar/jquery.stellar.js" type="text/javascript" charset="utf-8"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Vue js -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/static/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/http-vue-loader@1.4.1/src/httpVueLoader.min.js"></script>
 
+    <script src="/static/vue/apps/app.js"></script>
+
 	<!-- Main JS -->
-	<script src="/static/js/app.min.js "></script>
+	<script src="/static/js/app.min.js"></script>
 </body>
 </html>
