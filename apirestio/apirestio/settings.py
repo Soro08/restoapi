@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
+    'django_filters',
     'myappi.apps.MyappiConfig',
+    'django_admin_generator',
 ]
 
 MIDDLEWARE = [
@@ -72,7 +76,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'apirestio.wsgi.application'
 
 GRAPHENE = {
-    #'SCHEMA': 'app.schema.schema' # Where your Graphene schema lives
+    'SCHEMA': 'apirestio.schema.schema' # Where your Graphene schema lives
+}
+
+GRAPHENE_DJANGO_EXTRAS = {
+    'DEFAULT_PAGINATION_CLASS': 'graphene_django_extras.paginations.LimitOffsetGraphqlPagination',
+    'DEFAULT_PAGE_SIZE': 20,
+    'MAX_PAGE_SIZE': 50,
+    'CACHE_ACTIVE': True,
+    'CACHE_TIMEOUT': 300    # seconds
 }
 
 
