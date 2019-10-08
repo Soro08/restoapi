@@ -17,14 +17,14 @@ class SpecialiteNode(DjangoObjectType):
 class CategorieNode(DjangoObjectType):
     class Meta:
         model = Categorie
-        filter_fields = ['titre','platcateg']
+        filter_fields = ['titre','platcateg','statut',]
         interfaces = (relay.Node, )
 
 
 class MenuNode(DjangoObjectType):
     class Meta:
         model = Menu
-        filter_fields = ['jour','statut']
+        filter_fields = ['jour','statut', 'position']
         interfaces = (relay.Node, )
 
 class PlatNode(DjangoObjectType):
@@ -32,8 +32,10 @@ class PlatNode(DjangoObjectType):
         model = Plat
         filter_fields = {
             'titre': ['exact', 'icontains', 'istartswith'],
+            'prix': ['lt', 'gt'],
             'specialite': ['exact'],
             'specialite__titre': ['exact'],
+            'menu__position': ['exact'],
         }
         interfaces = (relay.Node, )
 

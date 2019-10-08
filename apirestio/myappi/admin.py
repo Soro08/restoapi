@@ -24,6 +24,18 @@ class CategorieAdmin(admin.ModelAdmin):
         'date_add',
         'date_upd',
     )
+    actions = ('active', 'deactive')
+    def active(self, request, queryset):
+        queryset.update(statut=False)
+        self.message_user(request, 'La selection a été deactivé avec succès')
+
+    active.short_description = 'Desactiver'
+
+    def deactive(self, request, queryset):
+        queryset.update(statut=True)
+        self.message_user(request, 'La selection a été activé avec succès')
+
+    deactive.short_description = 'Activer'
     
 class MenuAdmin(admin.ModelAdmin):
 

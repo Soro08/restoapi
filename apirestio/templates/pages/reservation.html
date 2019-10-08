@@ -17,20 +17,20 @@
                             Book Now
                         </h2>
                     </div>
-                    <form method="post" name="contact-us" action="">
+                    <form name="contact-us">
                         <div class="row">
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                                <input type="text" class="form-control" id="name" name="name" v-model="nom" placeholder="Name">
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                                <input type="text" class="form-control" id="email" name="email" v-model="email" placeholder="Email">
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone">
+                                <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" v-model="phone" placeholder="Phone">
                             </div>
                             <div class="col-md-6 form-group">
                                 <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" placeholder="Date" />
+                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" v-model="days" placeholder="Date" />
                                     <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
                                         <div class="input-group-text">
                                             <span class="lnr lnr-calendar-full"></span>
@@ -41,7 +41,7 @@
 
                             <div class="col-md-6 form-group">
                                 <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3" placeholder="Time" />
+                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3" v-model="heure" placeholder="Time" />
                                     <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
                                         <div class="input-group-text">
                                             <span class="lnr lnr-clock"></span>
@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="col-md-12 form-group">
-                                <select class="form-control" id="selectPerson">
+                                <select class="form-control" id="selectPerson" v-model="persone">
                                     <option></option>
                                     <option>1</option>
                                     <option>2</option>
@@ -62,10 +62,10 @@
                             </div>
                 
                             <div class="col-md-12 form-group">
-                                <textarea class="form-control" id="message" name="message" rows="6" placeholder="Your Message ..."></textarea>
+                                <textarea class="form-control" id="message" name="message" rows="6" placeholder="Your Message ..." v-model="messages"></textarea>
                             </div>
                             <div class="col-md-12 text-center">
-                                <button class="btn btn-primary btn-shadow btn-lg" type="submit" name="submit">Send Message</button>
+                                <button class="btn btn-primary btn-shadow btn-lg">Send Message</button>
                             </div>
                         </div>
                     </form>

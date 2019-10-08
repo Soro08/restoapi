@@ -1,15 +1,25 @@
 new Vue({
     el: '#my-app',
     data : {
-      message : 'app message',
-      base_usl : 'http://127.0.0.1:8000'
+        message : 'app message',
+        base_usl : 'http://127.0.0.1:8000',
+        datamenu : [],
+        nom: '',
+        email:'',
+        phone:'',
+        days:'',
+        heure:'',
+        persone:1,
+        messages:'',
     },
     components: {
-      'my-menu': httpVueLoader('/static/vue/components/menu.vue'),
-      'my-special': httpVueLoader('/static/vue/components/specialite.vue')
+        'my-menu': httpVueLoader('/static/vue/components/menu.vue'),
+        'my-special': httpVueLoader('/static/vue/components/specialite.vue'),
+        'my-plats': httpVueLoader('/static/vue/components/plats.vue'),
     },
+    delimiters: ["${", "}"],
     mounted(){
-      this.getdata();
+        this.getdata();
     },
 
     methods:{
@@ -17,6 +27,8 @@ new Vue({
             console.log('data getting')
             axios.defaults.xsrfCookieName = 'csrftoken'
             axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+            var d = new Date();
+            var n = d.getDay(); console.log(n)
 
             axios({
                 url: this.base_usl + '/graphql',
@@ -24,18 +36,21 @@ new Vue({
                 data: {
                     query: `
                     query{
-                        allMenus(statut:true){
-                            pageInfo{
-                                hasNextPage,
-                                hasPreviousPage,
-                                startCursor,
-                                endCursor
-                            }
+                        allCategories(statut:true){
                             edges{
-                            node{
-                                jour,
-                                statut
-                            }
+                                node{
+                                    titre,
+                                    platcateg(menu_Position:`+ n +`){
+                                    edges{
+                                        node{
+                                            titre,
+                                            imageMenu,
+                                            ingredient,
+                                            prix,
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -43,18 +58,47 @@ new Vue({
                 }
             })
             .then(response => {
-                myshop = response.data
+                result = response.data
 
                 console.log('getting..')
                 
-
-                console.log(response.data)
+                this.datamenu = result.data.allCategories.edges
+                console.log(result.data.allCategories)
                 //this.loading = false;
             })
             .catch((err) => {
                 //this.loading = false;
                 console.log(err);
             })
-        }
+        },
+        sendcode() {
+            
+
+            console.log(this.messages)
+            // let data = JSON.stringify({
+            //     code: code,
+            //     id_exo: exoid,
+
+            // })
+
+            axios.defaults.xsrfCookieName = 'csrftoken'
+            axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
+            // axios.post(this.base_usl + '/add', data, {
+            //         headers: {
+            //             'Content-Type': 'application/json',
+            //         }
+            //     })
+            //     .then((response) => {
+
+            //         //resultats = JSON.parse(response.data)
+
+            //     })
+            //     .catch((err) => {
+                    
+            //         console.log(err);
+            //     })
+
+        },
     }
 });

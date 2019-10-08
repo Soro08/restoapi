@@ -14,15 +14,18 @@
                                     Specialties
                                 </span>
                                 <h2>
-                                    Our Menu
+                                    Our Menu {{ todays|date }}
                                 </h2>
                             </div>  
                         </div>
                     </div>
                     <div class="row">
-                        <my-menu></my-menu>
-                        <my-menu></my-menu>
-                        <my-menu></my-menu>
+                        <my-menu 
+                        v-for="item in datamenu"
+                        v-bind:todo="item"
+                        v-bind:key="item.id"
+                        ></my-menu>
+                        
                     </div>
                 </div>
             </div>
