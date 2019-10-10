@@ -38,10 +38,10 @@
             </div>
             <div class="col-lg-6 hero-right">
                 <div class="owl-carousel owl-theme hero-carousel" ref="carousel_or_anything">
-                        <!-- <div class="item" v-for="items in dataaccimage" v-bind:key="items.id">
+                        <div class="item" v-for="items in dataaccimage" v-bind:key="items.id">
                             <img class="img-fluid" :src="'/media/'+items.node.image" alt="">
-                        </div> -->
-                    <div class="item">
+                        </div>
+                    <!-- <div class="item">
                         <img class="img-fluid" src="/static/img/hero-1.jpg" alt="">
                     </div>
                     <div class="item">
@@ -49,7 +49,7 @@
                     </div>
                     <div class="item">
                         <img class="img-fluid" src="/static/img/hero-3.jpg" alt="">
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -74,20 +74,20 @@
                         <div class="pl-lg-5 ml-md-5">
                             <p>${ dataabout.description }</p>
                             <h3 class="mt-5">Special Recipe</h3>
-                            <div class="row">
-                                <div class="col-4">
+                            <div class="owl-carousel owl-theme owl-user">
+                                <div class="item">
                                     <a href="#" class="thumb-menu">
                                         <img class="img-fluid img-cover" src="/static/img/hero-1.jpg" />
                                         <h6>Australian Organic Beef</h6>
                                     </a>
                                 </div>
-                                <div class="col-4">
+                                <div class="item">
                                     <a href="#" class="thumb-menu">
                                         <img class="img-fluid img-cover" src="/static/img/hero-1.jpg" />
                                         <h6>Australian Organic Beef</h6>
                                     </a>
                                 </div>
-                                <div class="col-4">
+                                <div class="item">
                                     <a href="#" class="thumb-menu">
                                         <img class="img-fluid img-cover" src="/static/img/hero-1.jpg"/>
                                         <h6>Australian Organic Beef</h6>
@@ -187,18 +187,13 @@
                 <div class="row">
                     <!-- Testimonial -->
                     <div class="testi-content testi-carousel owl-carousel">
-                        <div class="testi-item">
+                        <div class="testi-item" v-for="testi in datatesti">
                             <i class="testi-icon fa fa-3x fa-quote-left"></i>
-                            <p class="testi-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <p class="testi-author">John Doe</p>
-                            <p class="testi-desc">CEO of <span>GetTemplates</span></p>
+                            <p class="testi-text">${ testi.node.message }</p>
+                            <p class="testi-author">${ testi.node.user }</p>
+                            <p class="testi-desc">${ testi.node.role }</p>
                         </div>
-                        <div class="testi-item">
-                            <i class="testi-icon fa fa-3x fa-quote-left"></i>
-                            <p class="testi-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci non doloribus ut, alias doloremque perspiciatis.</p>
-                            <p class="testi-author">Mary Jane</p>
-                            <p class="testi-desc">CTO of <span>Unidentity Inc</span></p>
-                        </div>
+                        
                     </div>
                     <!-- End of Testimonial -->
                 </div>
@@ -218,100 +213,101 @@
                         Our Team
                     </h2>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="team-card mb-5">
-                            <img class="img-fluid" src="/static/img/chef-1.jpg" alt="">
-                            <div class="team-desc">
-                                <h4 class="mb-0">Aaron Patel</h4>
-                                <p class="mb-1">CEO</p>
-                                <ul class="list-inline mb-0 team-social-links">
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fab fa-google-plus-g"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                <div class="owl-carousel owl-theme owl-user">
+                    
+                        <div class="item">
+                            <div class="team-card mb-5">
+                                <img class="img-fluid" src="/static/img/chef-1.jpg" alt="">
+                                <div class="team-desc">
+                                    <h4 class="mb-0">Aaron Patel</h4>
+                                    <p class="mb-1">CEO</p>
+                                    <ul class="list-inline mb-0 team-social-links">
+                                        <li class="list-inline-item">
+                                            <a href="#">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#">
+                                                <i class="fab fa-google-plus-g"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="team-card mb-5">
-                            <img class="img-fluid" src="/static/img/chef-2.jpg" alt="">
-                            <div class="team-desc">
-                                <h4 class="mb-0">Daniel Tebas</h4>
-                                <p class="mb-1">Chef</p>
-                                <ul class="list-inline mb-0 team-social-links">
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fab fa-google-plus-g"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                        <div class="item">
+                            <div class="team-card mb-5">
+                                <img class="img-fluid" src="/static/img/chef-2.jpg" alt="">
+                                <div class="team-desc">
+                                    <h4 class="mb-0">Daniel Tebas</h4>
+                                    <p class="mb-1">Chef</p>
+                                    <ul class="list-inline mb-0 team-social-links">
+                                        <li class="list-inline-item">
+                                            <a href="#">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#">
+                                                <i class="fab fa-google-plus-g"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="team-card mb-5">
-                            <img class="img-fluid" src="/static/img/chef-3.jpg" alt="">
-                            <div class="team-desc">
-                                <h4 class="mb-0">Jon Snow</h4>
-                                <p class="mb-1">Chef</p>
-                                <ul class="list-inline mb-0 team-social-links">
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fab fa-google-plus-g"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                        <div class="item">
+                            <div class="team-card mb-5">
+                                <img class="img-fluid" src="/static/img/chef-3.jpg" alt="">
+                                <div class="team-desc">
+                                    <h4 class="mb-0">Jon Snow</h4>
+                                    <p class="mb-1">Chef</p>
+                                    <ul class="list-inline mb-0 team-social-links">
+                                        <li class="list-inline-item">
+                                            <a href="#">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="#">
+                                                <i class="fab fa-google-plus-g"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

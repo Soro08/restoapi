@@ -1,4 +1,4 @@
-new Vue({
+var app = new Vue({
     el: '#my-app',
     data : {
         message : 'app message',
@@ -129,6 +129,51 @@ new Vue({
                 console.log(result.data.allAcceuils.edges[0].node)
                 this.loaddata = false;
                 //this.loading = false;
+                var vm = this; //declare this just BEFORE calling axios();
+                // The below are inside axios.then()
+                
+                Vue.nextTick(function(){
+                    $(".hero-carousel").owlCarousel({
+                        loop:!0,
+                        margin:10,
+                        nav:!0,
+                        dots:!1,
+                        responsive:{
+                            0:{
+                                items:1
+                            },
+                            600:{
+                                items:1
+                            }
+                        },
+                        nav:!0,
+                        navText:['<span class="lnr lnr-chevron-left"></span>','<span class="lnr lnr-chevron-right"></span>']
+                    });
+                    $(".testi-carousel").owlCarousel({
+                        loop:!0,margin:10,autoplay:!0,nav:!1,dots:!0,
+                        dotSpeed:1e3,autoplay:!0,autoplaySpeed:1e3,items:1
+                    });
+                    $('.owl-user').owlCarousel({
+                        rtl:true,
+                        loop:true,
+                        margin:10,
+                        autoplay:!0,nav:!1,dots:!0,
+                        dotSpeed:1e3,autoplay:!0,autoplaySpeed:1e3,
+                        nav:false,
+                        responsive:{
+                            0:{
+                                items:1
+                            },
+                            600:{
+                                items:2
+                            },
+                            1000:{
+                                items:2
+                            }
+                        }
+                    })
+
+                })
             })
             .catch((err) => {
                 //this.loading = false;
@@ -164,5 +209,8 @@ new Vue({
             //     })
 
         },
+    },
+    directives: {
+        
     }
 });
