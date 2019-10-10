@@ -56,6 +56,15 @@
         width: 100%;
         height: 2px;
         } 
+
+        .cover-spin {
+            position:fixed;
+            width:100%;
+            left:0;right:0;top:0;bottom:0;
+            background-color: #111111a8;
+            z-index:9999;
+            display:block;
+        }
     </style>
 
 </head>
@@ -94,6 +103,12 @@
     </div>
     <div id="canvas-overlay"></div>
 	<div id="my-app" class="boxed-page">
+            <div class="cover-spin" :style="[ loaddata? { 'display':'block' } : { 'display':'none' } ]">
+                <div style="height:100vh;display:flex;align-items:center;justify-content:center;width:100%">
+                    <img src="/static/img/svg-loaders/ball-triangle.svg" width="60" alt=""> 
+                </div>
+                    
+            </div>
 		<nav id="navbar-header" class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand navbar-brand-center d-flex align-items-center p-0 only-mobile" href="/">

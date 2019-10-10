@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'myappi.apps.MyappiConfig',
+    'gestion.apps.GestionConfig',
     'django_admin_generator',
     'silk'
 ]

@@ -4,6 +4,11 @@ new Vue({
         message : 'app message',
         base_usl : 'http://127.0.0.1:8000',
         datamenu : [],
+        dataacceuil:[],
+        dataaccimage:[],
+        dataabout:[],
+        datatesti:[],
+        datateam:[],
         nom: '',
         email:'',
         phone:'',
@@ -11,6 +16,7 @@ new Vue({
         heure:'',
         persone:1,
         messages:'',
+        loaddata:true,
     },
     components: {
         'my-menu': httpVueLoader('/static/vue/components/menu.vue'),
@@ -20,8 +26,14 @@ new Vue({
     delimiters: ["${", "}"],
     mounted(){
         this.getdata();
+        //jQuery(this.$refs.carousel_or_anything).owlCarousel();
     },
-
+    // ready: function() {
+        
+    //     Vue.nextTick(function () {
+    //         this.installOWLcarousel();
+    //     }.bind(this))
+    //  },
     methods:{
         getdata: function(){
             console.log('data getting')
@@ -39,8 +51,9 @@ new Vue({
                         allCategories(statut:true){
                             edges{
                                 node{
+                                    id
                                     titre,
-                                    platcateg(menu_Position:`+ n +`){
+                                    platcateg(menu_Position:1){
                                     edges{
                                         node{
                                             titre,
@@ -51,6 +64,51 @@ new Vue({
                                         }
                                     }
                                 }
+                            }
+                    },
+                    allAcceuils(first:1, statut:true){
+                        edges{
+                            node{
+                                titre,
+                                videoUrl,
+                            }
+                            }
+                        },
+                        allImgacceuils(statut:true){
+                            edges{
+                            node{
+                                image,
+                            }
+                            }
+                        },
+                        
+                        allAbouts(statut:true, first:1){
+                            edges{
+                            node{
+                                titre,
+                                description,
+                                image,
+                            }
+                            }
+                        },
+                        
+                        allTestimonials(statut:true){
+                            edges{
+                            node{
+                                message,
+                                user,
+                                role
+                            }
+                            }
+                        },
+                        
+                            allHorraires(statut:true, first:6){
+                            edges{
+                            node{
+                                jour,
+                                heureDebut,
+                                heureFin
+                            }
                             }
                         }
                     }
@@ -63,7 +121,13 @@ new Vue({
                 console.log('getting..')
                 
                 this.datamenu = result.data.allCategories.edges
-                console.log(result.data.allCategories)
+                this.dataacceuil = result.data.allAcceuils.edges[0].node
+                this.dataabout = result.data.allAbouts.edges[0].node
+                this.dataaccimage = result.data.allImgacceuils.edges
+                this.datatesti = result.data.allTestimonials.edges
+                //this.datateam = result.data.allImgacceuils.edges
+                console.log(result.data.allAcceuils.edges[0].node)
+                this.loaddata = false;
                 //this.loading = false;
             })
             .catch((err) => {
