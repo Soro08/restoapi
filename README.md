@@ -3,6 +3,17 @@
 
 # Use axios to get graphQl data
 
+## CDN Vue Js and Axios
+
+```bash
+
+    <!-- Vue js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/static/axios.min.js"></script>
+    
+
+```
+
 ## Structure
 
 ```bash
